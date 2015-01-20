@@ -10,7 +10,7 @@
 // roundedBox([20, 30, 40], 5, true);
 
 // size is a vector [w, h, d]
-module roundedBox(size, radius, sidesonly)
+module roundedBox(size, radius, sidesonly = false)
 {
   rot = [ [0,0,0], [90,0,90], [90,90,0] ];
   if (sidesonly) {
