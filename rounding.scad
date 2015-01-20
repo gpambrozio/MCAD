@@ -13,10 +13,10 @@ module round_corner(r) {
 
 module round_side(r, h) {
 	delta = 1;
-	translate([r / 2, r / 2, 0])
+	translate([(r-delta) / 2, (r-delta) / 2, 0])
 	difference() {
 		cube([r + delta, r + delta, h], center = true);
-		translate([r/2, r/2, 0]) cylinder(r = r, h = h + 1, center = true);
+		translate([(r+delta)/2, (r+delta)/2, 0]) cylinder(r = r, h = h + delta, center = true);
 	}
 }
 
@@ -29,3 +29,4 @@ module round_corner_and_sides(size, r) {
 }
 
 //round_corner_and_sides([10,20,30], 3);
+//round_side(2,5);
