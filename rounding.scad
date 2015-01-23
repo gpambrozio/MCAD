@@ -1,5 +1,4 @@
-module round_corner(r) {
-	delta = 1;
+module round_corner(r, delta = 1) {
 	cube_size = 2 * (r + delta);
 	translate([-r,-r,-r])
 	difference() {
@@ -11,8 +10,7 @@ module round_corner(r) {
 	}
 }
 
-module round_side(r, h) {
-	delta = 1;
+module round_side(r, h, delta = 1) {
 	translate([(r-delta) / 2, (r-delta) / 2, 0])
 	difference() {
 		cube([r + delta, r + delta, h], center = true);
@@ -20,11 +18,11 @@ module round_side(r, h) {
 	}
 }
 
-module round_corner_and_sides(size, r) {
-	round_corner(r);
-	if (size[0] > 0) translate([-size[0]/2,0,0]) rotate([0,90,180]) round_side(r, size[0]);
-	if (size[1] > 0) translate([0,-size[1]/2,0]) rotate([-90,0,180]) round_side(r, size[1]);
-	if (size[2] > 0) translate([0,0,-size[2]/2]) rotate([0,0,180]) round_side(r, size[2]);
+module round_corner_and_sides(size, r, delta = 1) {
+	round_corner(r, delta = delta);
+	if (size[0] > 0) translate([-size[0]/2,0,0]) rotate([0,90,180]) round_side(r, size[0], delta = delta);
+	if (size[1] > 0) translate([0,-size[1]/2,0]) rotate([-90,0,180]) round_side(r, size[1], delta = delta);
+	if (size[2] > 0) translate([0,0,-size[2]/2]) rotate([0,0,180]) round_side(r, size[2], delta = delta);
 
 }
 
